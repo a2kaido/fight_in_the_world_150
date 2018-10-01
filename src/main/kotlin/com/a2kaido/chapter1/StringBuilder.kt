@@ -12,7 +12,7 @@ fun main(args: Array<String>) {
     println(end2 - start2)
 
     val start3 = System.currentTimeMillis()
-    println(useMyStringBuilder())
+    useMyStringBuilder()
     val end3 = System.currentTimeMillis()
     println(end3 - start3)
 }
