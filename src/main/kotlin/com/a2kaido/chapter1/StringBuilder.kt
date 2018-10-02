@@ -1,49 +1,51 @@
 package com.a2kaido.chapter1
 
+import com.a2kaido.StopWatch
+
 fun main(args: Array<String>) {
-    val start = System.currentTimeMillis()
-    noUseStringBuilder()
-    val end = System.currentTimeMillis()
-    println(end - start)
+    val sw = StopWatch()
+    val loop = 10000
 
-    val start2 = System.currentTimeMillis()
-    useStringBuilder()
-    val end2 = System.currentTimeMillis()
-    println(end2 - start2)
+    sw.start()
+    noUseStringBuilder(loop)
+    println(sw.end())
 
-    val start3 = System.currentTimeMillis()
-    useMyStringBuilder()
-    val end3 = System.currentTimeMillis()
-    println(end3 - start3)
+    sw.start()
+    useStringBuilder(loop)
+    println(sw.end())
+
+    sw.start()
+    useMyStringBuilder(loop)
+    println(sw.end())
 }
 
-fun noUseStringBuilder(): String {
+fun noUseStringBuilder(loop: Int): String {
     val x = "a"
     var result = ""
 
-    for (i in 0..100000) {
+    for (i in 0..loop) {
         result += x
     }
 
     return result
 }
 
-fun useStringBuilder(): String {
+fun useStringBuilder(loop: Int): String {
     val x = "a"
     val stringBuilder = StringBuilder()
 
-    for (i in 0..100000) {
+    for (i in 0..loop) {
         stringBuilder.append(x)
     }
 
     return stringBuilder.toString()
 }
 
-fun useMyStringBuilder(): String {
+fun useMyStringBuilder(loop: Int): String {
     val x = "a"
     val stringBuilder = MyStringBuilder()
 
-    for (i in 0..100000) {
+    for (i in 0..loop) {
         stringBuilder.add(x)
     }
 
@@ -55,4 +57,5 @@ class MyStringBuilder: ArrayList<String>() {
         return joinToString(separator = "")
     }
 }
+
 
