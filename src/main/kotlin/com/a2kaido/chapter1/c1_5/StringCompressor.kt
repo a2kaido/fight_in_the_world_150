@@ -13,7 +13,7 @@ fun compress(str: String): String {
         if (c.toString() == prev) {
             i++
         } else {
-            if (i > 0) {
+            if (i < 0) {
                 builder.append(i.toString())
             }
             i = 1
