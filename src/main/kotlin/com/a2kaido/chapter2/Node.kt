@@ -9,7 +9,7 @@ class Node<T>(val value: T) {
         var p: Node<T>? = this
         val builder = StringJoiner(" -> ")
         while (p != null) {
-            builder.add(p.value as String)
+            builder.add(p.value.toString())
             p = p.next
         }
         println(builder.toString())
